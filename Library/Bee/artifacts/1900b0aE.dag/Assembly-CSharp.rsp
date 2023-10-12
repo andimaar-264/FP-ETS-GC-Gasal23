@@ -381,6 +381,8 @@
 "Assets/Scripts/InputController.cs"
 "Assets/Scripts/PlayerAgent.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/ThirdPersonController.cs"
+"Assets/Scripts/ThirdPersonMovement.cs"
 -langversion:9.0
 
 /deterministic
