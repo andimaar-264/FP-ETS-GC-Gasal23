@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Tooltip("Maximum slope the character can jump on")]
-    [Range(5f, 60f)]
-    public float slopeLimit = 45f;
+    [Range(5f, 90f)]
+    public float slopeLimit = 80f;
 
     [Tooltip("Move speed in meters/second")]
     public float moveSpeed = 5f;
 
-    // [Tooltip("Turn speed in degrees/second, left (+) or right (-)")]     
-    // public float turnSpeed = 300;
+    [Tooltip("Turn speed in degrees/second, left (+) or right (-)")] //    
+    public float turnSpeed = 300; //
 
     [Tooltip("Whether the character can jump")]
     public bool allowJump = false;
@@ -21,9 +21,9 @@ public class PlayerController : MonoBehaviour
     public float jumpSpeed = 4f;
 
     public bool IsGrounded { get; private set; }
-    // public float ForwardInput { get; set; }
-    // public float TurnInput { get; set; }
-    public float HorizontalInput { get; set; }
+    public float ForwardInput { get; set; } //
+    public float TurnInput { get; set; } //
+   // public float HorizontalInput { get; set; }
     public bool JumpInput { get; set; }
 
     new private Rigidbody rigidbody;
@@ -65,12 +65,13 @@ public class PlayerController : MonoBehaviour
     // Processes input actions and converts them into movement
     private void ProcessActions()
     {
-        // Process Turning
-        // if (TurnInput != 0f)
-        // {
-        //     float angle = Mathf.Clamp(TurnInput, -1f, 1f) * turnSpeed;
-        //     transform.Rotate(Vector3.up, Time.fixedDeltaTime * angle);
-        // }
+        //Process Turning
+        if (TurnInput != 0f) //
+        {
+            float angle = Mathf.Clamp(TurnInput, -1f, 1f) * turnSpeed;
+            transform.Rotate(Vector3.up, Time.fixedDeltaTime * angle);
+        }
+
         // Process Movement/Jumping
         if (IsGrounded)
         {
@@ -84,16 +85,16 @@ public class PlayerController : MonoBehaviour
             }
 
             // Apply a forward or backward velocity based on player input
-            rigidbody.velocity += transform.forward * Mathf.Clamp(HorizontalInput, -1f, 1f) * moveSpeed;
+            rigidbody.velocity += transform.forward * Mathf.Clamp(ForwardInput, -1f, 1f) * moveSpeed;
         }
         else
         {
             // Check if player is trying to change forward/backward movement while jumping/falling
-            if (!Mathf.Approximately(HorizontalInput, 0f))
+            if (!Mathf.Approximately(ForwardInput, 0f))
             {
                 // Override just the forward velocity with player input at half speed
                 Vector3 verticalVelocity = Vector3.Project(rigidbody.velocity, Vector3.up);
-                rigidbody.velocity = verticalVelocity + transform.forward * Mathf.Clamp(HorizontalInput, -1f, 1f) * moveSpeed / 2f;
+                rigidbody.velocity = verticalVelocity + transform.forward * Mathf.Clamp(ForwardInput, -1f, 1f) * moveSpeed / 2f;
             }
         }
     }

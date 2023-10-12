@@ -17,8 +17,9 @@ public class InputController : MonoBehaviour
         int vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
         int horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
         bool jump = Input.GetKey(KeyCode.Space);
-        // playerController.ForwardInput = vertical;
-        playerController.HorizontalInput = horizontal;
+        playerController.ForwardInput = vertical; //
+        playerController.TurnInput = horizontal;
+       // playerController.HorizontalInput = horizontal;
         playerController.JumpInput = jump;
     }
 }

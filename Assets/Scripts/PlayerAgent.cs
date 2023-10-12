@@ -63,8 +63,9 @@ public class PlayerAgent : Agent
         float horizontal = actions.DiscreteActions[1] <= 1 ? actions.DiscreteActions[1] : -1;
         bool jump = actions.DiscreteActions[2] > 0;
         
-        // playerController.ForwardInput = vertical;
-        playerController.HorizontalInput = horizontal;
+        playerController.ForwardInput = vertical; // 
+        playerController.TurnInput = horizontal;
+        // playerController.HorizontalInput = horizontal;
         playerController.JumpInput = jump;     
     }
 
