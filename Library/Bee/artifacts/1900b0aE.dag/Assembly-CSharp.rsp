@@ -378,6 +378,7 @@
 "Assets/Scripts/BasicMovement.cs"
 "Assets/Scripts/Collectible.cs"
 "Assets/Scripts/FloaterAnimation.cs"
+"Assets/Scripts/GameManager.cs"
 "Assets/Scripts/InputController.cs"
 "Assets/Scripts/PlayerAgent.cs"
 "Assets/Scripts/PlayerController.cs"

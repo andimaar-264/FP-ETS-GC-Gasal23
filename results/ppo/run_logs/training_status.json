@@ -1,35 +1,4 @@
 {
-    "AgentCollector": {
-        "checkpoints": [
-            {
-                "steps": 499966,
-                "file_path": "results\\ppo\\AgentCollector\\AgentCollector-499966.onnx",
-                "reward": -1.0,
-                "creation_time": 1696993065.4631264,
-                "auxillary_file_paths": [
-                    "results\\ppo\\AgentCollector\\AgentCollector-499966.pt"
-                ]
-            },
-            {
-                "steps": 500030,
-                "file_path": "results\\ppo\\AgentCollector\\AgentCollector-500030.onnx",
-                "reward": -1.0,
-                "creation_time": 1696993065.5418718,
-                "auxillary_file_paths": [
-                    "results\\ppo\\AgentCollector\\AgentCollector-500030.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 500030,
-            "file_path": "results\\ppo\\AgentCollector.onnx",
-            "reward": -1.0,
-            "creation_time": 1696993065.5418718,
-            "auxillary_file_paths": [
-                "results\\ppo\\AgentCollector\\AgentCollector-500030.pt"
-            ]
-        }
-    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "0.29.0",
