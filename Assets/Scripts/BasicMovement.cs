@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BasicMovement : MonoBehaviour
 {
-    public Rigidbody cube_body;
+    public Rigidbody rb;
     public float moveForce;
     public float jumpForce;
     private float x;
-    public bool isOnPlatform = true;
+    public bool isOnGround = true;
     // public int jumpRemain = 2;
 
     void Start()
     {
-        cube_body = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
     
     // Update is called once per frame
@@ -21,16 +21,16 @@ public class BasicMovement : MonoBehaviour
     {
         x = Input.GetAxis("Horizontal") * moveForce * Time.deltaTime;
 
-        cube_body.AddForce(this.transform.right * x);
+        rb.AddForce(this.transform.right * x);
 
         x = Input.GetAxis("Vertical") * moveForce * Time.deltaTime;
 
-        cube_body.AddForce(this.transform.forward * x);
+        rb.AddForce(this.transform.forward * x);
         
-        if(Input.GetKey(KeyCode.Space) && isOnPlatform)
+        if(Input.GetKey(KeyCode.Space) && isOnGround)
         {
-            cube_body.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-            isOnPlatform = false;
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
         }
 
         if(transform.position.y <= -10 || transform.position.x <= -20 || transform.position.x >= 20)
@@ -40,7 +40,7 @@ public class BasicMovement : MonoBehaviour
 
         // if(Input.GetKey(KeyCode.Space) && (jumpRemain >= 1))
         // {
-        //     cube_body.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        //     rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         //     jumpRemain -= 1;
         // }
     }
@@ -49,7 +49,7 @@ public class BasicMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
-            isOnPlatform = true;
+            isOnGround = true;
         }
     }
 

@@ -8,7 +8,7 @@ public class Collectible : MonoBehaviour
     public GameManager gameManager;
     public float respawnDelay = 2.0f;
     public Transform spawnPoint;
-
+    
     private Collider coinCollider;
 
     // Start is called before the first frame update
