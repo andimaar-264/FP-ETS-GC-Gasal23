@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
+using Unity.VisualScripting;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
     [Header("Movement")]
+
+    // GameManager Instance;
+    // public GameObject playeritself;
     public float moveSpeed;
 
     public float groundDrag;
@@ -37,9 +42,14 @@ public class ThirdPersonMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true;
+
+        // Instance = GameObject.Find("Player").GetComponent<GameManager>();
+
+        // gameManager = GameObject.FindGameObjectWithTag("Player").GetComponent<GameManager>();
+        // GameManager gameManager = FindObjectOfType<GameManager>();
     }
 
-    private void Update()
+    public void Update()
     {
         // Ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, Ground);
@@ -52,6 +62,24 @@ public class ThirdPersonMovement : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+        
+        // falling off the map
+        if(transform.position.y <= -15)
+        {
+            transform.position = new Vector3(0, 0, -22);
+            Debug.Log("respawned");
+
+            if (GameManager.instance == null)
+            {
+                Debug.Log("gameManager nullity null");
+            } 
+            else 
+            {
+                GameManager.instance.RemovePoints(1);
+                Debug.Log("called the remove func");
+            }
+            
+        }
     }
 
     private void FixedUpdate()
@@ -112,4 +140,5 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         readyToJump = true;
     }
+
 }

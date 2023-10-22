@@ -34,11 +34,11 @@ public class ThirdPersonController : MonoBehaviour
 
         if (isOnPlatform)
         {
-            controller.Move(move * Time.deltaTime * thirdPersonMovement.speed * groundDrag);
+            controller.Move(move * Time.deltaTime * thirdPersonMovement.moveSpeed * groundDrag);
         }
         else
         {
-            controller.Move(move * Time.deltaTime * thirdPersonMovement.speed * airDrag);
+            controller.Move(move * Time.deltaTime * thirdPersonMovement.moveSpeed * airDrag);
         }
 
         // Jumping
